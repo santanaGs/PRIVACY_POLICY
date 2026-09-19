@@ -1,1 +1,387 @@
-lorem
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Política de Privacidade — GFin</title>
+<meta name="description" content="Política de Privacidade do aplicativo GFin, app de controle financeiro pessoal 100% offline." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f7f4;
+    --surface: #ffffff;
+    --surface-elevated: #f7faf8;
+    --text: #17201c;
+    --text-soft: #65766f;
+    --border: #dfe9e4;
+    --primary: #1b8f65;
+    --primary-strong: #0f7a57;
+    --income: #0f8f62;
+    --income-surface: #dff7ec;
+    --expense: #d95c46;
+    --expense-surface: #fee8e1;
+    --balance-surface: #13241d;
+    --balance-border: #2d403a;
+    --balance-text: #f4fff8;
+    --on-strong: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d1412;
+      --surface: #161f1d;
+      --surface-elevated: #1e2925;
+      --text: #ebf4f1;
+      --text-soft: #9db0a8;
+      --border: #33413d;
+      --primary: #6fe0aa;
+      --primary-strong: #46c48c;
+      --income: #7ae5b5;
+      --income-surface: #173b2d;
+      --expense: #ff9c82;
+      --expense-surface: #492d28;
+      --balance-surface: #0a110f;
+      --balance-border: #2d3935;
+      --balance-text: #e8fff3;
+      --on-strong: #f2faf7;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d1412;
+    --surface: #161f1d;
+    --surface-elevated: #1e2925;
+    --text: #ebf4f1;
+    --text-soft: #9db0a8;
+    --border: #33413d;
+    --primary: #6fe0aa;
+    --primary-strong: #46c48c;
+    --income: #7ae5b5;
+    --income-surface: #173b2d;
+    --expense: #ff9c82;
+    --expense-surface: #492d28;
+    --balance-surface: #0a110f;
+    --balance-border: #2d3935;
+    --balance-text: #e8fff3;
+    --on-strong: #f2faf7;
+  }
+
+  * { box-sizing: border-box; }
+  html {
+    scroll-padding-top: calc(24px + env(safe-area-inset-top, 0px));
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+    line-height: 1.65;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+  }
+
+  header.hero {
+    margin-bottom: 40px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--balance-surface);
+    color: var(--balance-text);
+    border: 1px solid var(--balance-border);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 7px 13px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+  .badge svg { width: 13px; height: 13px; stroke: var(--balance-text); }
+
+  h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(26px, 4.4vw, 36px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+  }
+  .updated {
+    color: var(--text-soft);
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .lede {
+    background: var(--surface-elevated);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin: 32px 0 44px;
+    font-size: 15.5px;
+    color: var(--text);
+  }
+  .lede strong { color: var(--primary-strong); }
+
+  nav.toc {
+    margin-bottom: 48px;
+    padding: 20px 24px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface-elevated);
+  }
+  nav.toc p {
+    margin: 0 0 12px;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+  }
+  nav.toc ol {
+    margin: 0;
+    padding-left: 18px;
+    columns: 2;
+    column-gap: 24px;
+  }
+  nav.toc li { margin-bottom: 6px; break-inside: avoid; }
+  nav.toc a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+  }
+  nav.toc a:hover { color: var(--primary-strong); text-decoration: underline; }
+
+  section {
+    margin-bottom: 40px;
+    scroll-margin-top: 24px;
+  }
+  h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.005em;
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  p { margin: 0 0 14px; color: var(--text); font-size: 14.5px; }
+  ul { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 8px; font-size: 14.5px; }
+  code {
+    font-family: inherit;
+    background: var(--income-surface);
+    color: var(--income);
+    padding: 1px 6px;
+    border-radius: 5px;
+    font-size: 0.92em;
+  }
+
+  .highlight-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px;
+  }
+  .highlight-list li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px 0;
+  }
+  .highlight-list svg {
+    width: 16px; height: 16px;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .yes svg { stroke: var(--income); }
+  .no svg { stroke: var(--expense); }
+
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .contact-card a {
+    color: var(--primary-strong);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 14.5px;
+  }
+  .contact-card a:hover { text-decoration: underline; color: var(--primary); }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-soft);
+    font-size: 13px;
+    text-align: center;
+  }
+
+  @media (max-width: 520px) {
+    nav.toc ol { columns: 1; }
+    .wrap { padding: 40px 18px 72px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <span class="badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 3l7 3v6c0 5-3 7.5-7 9-4-1.5-7-4-7-9V6l7-3z"/></svg>
+      100% offline · 0 dados coletados
+    </span>
+    <h1>Política de Privacidade — GFin</h1>
+    <p class="updated">Última atualização: 16 de setembro de 2026</p>
+  </header>
+
+  <div class="lede">
+    Esta política descreve como o aplicativo <strong>GFin</strong> ("app", "nós") trata as informações do usuário.
+  </div>
+
+  <nav class="toc" aria-label="Sumário">
+    <p>Nesta página</p>
+    <ol>
+      <li><a href="#resumo">Resumo</a></li>
+      <li><a href="#dados-manipulados">Dados que o app manipula</a></li>
+      <li><a href="#dados-nao-coletados">Dados que o app não coleta</a></li>
+      <li><a href="#permissoes">Permissões</a></li>
+      <li><a href="#compartilhamento">Compartilhamento com terceiros</a></li>
+      <li><a href="#retencao">Retenção e exclusão</a></li>
+      <li><a href="#seguranca">Segurança</a></li>
+      <li><a href="#criancas">Crianças</a></li>
+      <li><a href="#alteracoes">Alterações desta política</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ol>
+  </nav>
+
+  <section id="resumo">
+    <h2>Resumo</h2>
+    <p>
+      O GFin é um aplicativo de controle financeiro pessoal <strong>100% offline</strong>.
+      Todos os dados que você registra ficam armazenados apenas no seu dispositivo.
+      <strong>Não coletamos, transmitimos, compartilhamos ou vendemos qualquer informação pessoal.</strong>
+    </p>
+  </section>
+
+  <section id="dados-manipulados">
+    <h2>Dados que o app manipula</h2>
+    <p>O app permite que você registre localmente:</p>
+    <ul>
+      <li>Receitas e despesas (título, valor, categoria, data, forma de pagamento)</li>
+      <li>Cartões (nome, bandeira, dia de fechamento)</li>
+      <li>Categorias personalizadas</li>
+      <li>Regras de recorrência e parcelamentos</li>
+      <li>Saldo inicial informado no onboarding</li>
+    </ul>
+    <p>
+      Esses dados são gravados exclusivamente em um banco SQLite local no seu dispositivo
+      (<code>finances.db</code>) e em preferências locais (tema, saldo). Nada é enviado
+      para servidores nossos ou de terceiros.
+    </p>
+  </section>
+
+  <section id="dados-nao-coletados">
+    <h2>Dados que o app não coleta</h2>
+    <ul class="highlight-list">
+      <li class="no">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        Não coletamos nome, e-mail, telefone ou qualquer identificador pessoal
+      </li>
+      <li class="no">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        Não usamos analytics, crash reporting ou publicidade
+      </li>
+      <li class="no">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        Não integramos SDKs de terceiros que coletem dados
+      </li>
+      <li class="no">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        Não requisitamos acesso a contatos, câmera, microfone, localização ou arquivos
+      </li>
+    </ul>
+  </section>
+
+  <section id="permissoes">
+    <h2>Permissões</h2>
+    <p>O app pode solicitar as seguintes permissões, todas usadas <strong>apenas localmente</strong>:</p>
+    <ul>
+      <li><strong>Armazenamento interno</strong>: para gravar o banco SQLite no diretório privado do app.</li>
+    </ul>
+  </section>
+
+  <section id="compartilhamento">
+    <h2>Compartilhamento com terceiros</h2>
+    <p>Nenhum. Como não coletamos dados, não há o que compartilhar.</p>
+  </section>
+
+  <section id="retencao">
+    <h2>Retenção e exclusão</h2>
+    <p>Como os dados ficam apenas no seu dispositivo, você pode apagá-los a qualquer momento:</p>
+    <ul>
+      <li>Use <strong>Cadastros → Limpar todos os lançamentos</strong> para remover receitas, despesas, parcelas e recorrências.</li>
+      <li>Desinstale o app para remover permanentemente todos os dados do dispositivo.</li>
+    </ul>
+  </section>
+
+  <section id="seguranca">
+    <h2>Segurança</h2>
+    <p>
+      Os dados são armazenados no diretório privado do app, protegido pelo sistema operacional.
+      O app não faz backup em nuvem por padrão.
+    </p>
+  </section>
+
+  <section id="criancas">
+    <h2>Crianças</h2>
+    <p>
+      O app não é direcionado a menores de 13 anos e não coleta dados intencionalmente
+      de nenhuma faixa etária.
+    </p>
+  </section>
+
+  <section id="alteracoes">
+    <h2>Alterações desta política</h2>
+    <p>
+      Podemos atualizar esta política quando adicionarmos novas funcionalidades.
+      A data no topo indica a versão vigente. Alterações relevantes serão comunicadas
+      dentro do próprio aplicativo.
+    </p>
+  </section>
+
+  <section id="contato">
+    <h2>Contato</h2>
+    <div class="contact-card">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color: var(--primary-strong); flex-shrink:0;">
+        <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>
+      </svg>
+      <div>
+        <p style="margin:0 0 4px; font-size:14px; color: var(--text-soft);">Dúvidas sobre esta política:</p>
+        <a href="mailto:gabrielsantana2267@gmail.com">gabrielsantana2267@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    GFin — Controle financeiro pessoal, 100% offline.
+  </footer>
+
+</div>
+
+</body>
+</html>
